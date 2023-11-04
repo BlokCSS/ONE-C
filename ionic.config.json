@@ -1,0 +1,10 @@
+{
+  "name": "One-C",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

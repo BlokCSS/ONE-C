@@ -1,0 +1,24 @@
+<ion-content [fullscreen]="true">
+  
+  <div class="contenedor">
+    <div class="header" style="display:flex;margin-top:1rem;">
+      <ion-icon routerLink="/home" style="font-size: 1.4rem;margin:auto;margin-left:0rem;margin-right:1rem;" name="arrow-back-outline"></ion-icon>
+      <h3 routerLink="/home" style="margin: auto;margin-left:0rem;">Volver</h3>
+      <ion-icon (click)="generalService.menuUser()" style="color: white;margin: auto;margin-right: 1rem;font-size: 1.6rem;" name="person"></ion-icon>
+    </div>
+
+    <div style="display: flex;margin-top:2rem;margin-bottom:1rem;">
+      <h1 style="margin: auto;margin-left:0rem;">Repartidores</h1>
+    </div>
+
+    <p *ngIf="repartidores.length == 0" style="text-align: center;padding:1rem;">No hay repartidores registrados</p>
+
+    <div *ngIf="repartidores.length > 0" class="repartidores">
+      <ion-card *ngFor="let repartidor of repartidores" style="padding:1rem;" (click)="verRepartidor(repartidor.id)">
+        <p style="font-weight: bold;margin: 0;font-size: 1.3rem;color:var(--ion-color-primary)">{{repartidor.nombre}}</p>
+        <p style="margin-top: 0.3rem;color: #c1c1c1;">Paquetes a repartir: {{repartidor.porRepartir}}</p>
+      </ion-card>
+    </div>
+  </div>
+
+</ion-content>

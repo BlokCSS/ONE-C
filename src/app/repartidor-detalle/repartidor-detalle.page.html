@@ -1,0 +1,45 @@
+<ion-content [fullscreen]="true">
+  <div class="contenedor">
+    <div class="header" style="display:flex;margin-top:1rem;">
+      <ion-icon routerLink="/repartidores" style="font-size: 1.4rem;margin:auto;margin-left:0rem;margin-right:1rem;" name="arrow-back-outline"></ion-icon>
+      <h3 routerLink="/repartidores" style="margin: auto;margin-left:0rem;">Volver</h3>
+      <ion-icon (click)="generalService.menuUser()" style="color: white;margin: auto;margin-right: 1rem;font-size: 1.6rem;" name="person"></ion-icon>
+    </div>
+
+    <div style="margin-top:2rem;">
+      <h1>{{repartidor.nombre}}</h1>
+      <p style="font-size: 1.1rem;margin-top: 0.2rem;color: #c1c1c1;">Cantidad de paquetes asignados: {{cantidad}}</p>
+    </div>
+
+    <div *ngIf="cantidad < 1">
+      <h4 style="margin-top:3rem;">Paquetes</h4>
+      <p style="text-align: center;">Sin paquetes asignados</p>
+    </div>
+
+    <div *ngIf="cantidad > 0">
+      
+      <h4 style="margin-top:3rem;">A repartir</h4>
+      <p *ngIf="porRepartir.length == 0" style="text-align: center;">Sin paquetes a repartir</p>
+      <div *ngIf="porRepartir.length > 0">
+        
+        <div *ngFor="let item of porRepartir" class="item" (click)="verPaquete(item.id)">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="4" style="display:flex;">
+                <img [src]="item.imagen" style="width:100%;height:100%;object-fit:cover;border-radius:0.5rem;max-height:7rem;" />
+              </ion-col>
+              <ion-col size="8">
+                <p style="font-weight: bold;margin: 0;font-size: 1.3rem;">{{item.nombre}}</p>
+                <p style="margin-top: 0.3rem;color: #c1c1c1;">{{item.autor}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+</ion-content>

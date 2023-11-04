@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true">
+  <div class="contenedor" style="margin:1rem;">
+    <div style="display: flex;margin-top:5rem;">
+      <h1 style="margin: auto;margin-left:0rem;">Ingresa a tu cuenta</h1>
+    </div>
+    <p style="color:gray">Ingresa a One-C para organizar tus pedidos</p>
+
+    <div style="height: 37vh;display: flex;">
+      <div style="margin:auto;width:100%;">
+        <ion-item style="margin-top:5rem;">
+          <ion-input [(ngModel)]="correo" label="Correo electronico" labelPlacement="floating" placeholder="Ingresa el correo electronico"></ion-input>
+        </ion-item>
+    
+        <ion-item style="margin-top:1rem;">
+          <ion-input [(ngModel)]="contra" label="Contraseña" labelPlacement="floating" placeholder="Ingresa la contraseña"></ion-input>
+        </ion-item>
+    
+    
+        <div style="position: relative;top: 0;left:0;width: -webkit-fill-available;">
+          <ion-button style="margin-top:2rem;width:100%;height:3.4rem;" (click)="login()">Ingresar</ion-button>
+        </div>
+        <p routerLink="/register" style="text-align: center;width:100%;">No tienes una cuenta? <a>Registrate aqui</a></p>
+      </div>
+    </div>
+  </div>
+</ion-content>

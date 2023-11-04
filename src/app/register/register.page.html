@@ -1,0 +1,38 @@
+<ion-content [fullscreen]="true">
+  <div class="contenedor">
+    <div style="display: flex;margin-top:2rem;">
+      <h1 style="margin: auto;margin-left:0rem;">Registro</h1>
+    </div>
+
+    <ion-item style="margin-top:2rem;">
+      <ion-input [(ngModel)]="nombre" label="Nombre" labelPlacement="floating" placeholder="Ingresa el nombre"></ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top:1rem;">
+      <ion-input [(ngModel)]="correo" label="Correo electronico" labelPlacement="floating" placeholder="Ingresa el correo electronico"></ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top:1rem;">
+      <ion-input type="number" [(ngModel)]="edad" label="Edad" labelPlacement="floating" placeholder="Ingresa la edad"></ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top:1rem;">
+      <ion-select style="width:10rem;" [(ngModel)]="pais">
+        <ion-select-option *ngFor="let p of paises" value="{{ p.pais }}">
+          {{ p.pais }} ({{p.codigo}})
+        </ion-select-option>
+      </ion-select>
+      <ion-input [(ngModel)]="telefono" placeholder="Ingresa el telefono"></ion-input>
+    </ion-item>
+
+    <ion-item style="margin-top:1rem;">
+      <ion-input type="password" [(ngModel)]="contra" label="Contraseña" labelPlacement="floating" placeholder="Ingresa la contraseña"></ion-input>
+    </ion-item>
+
+
+    <div style="position: relative;top: 0;left:0;margin:1rem;width: -webkit-fill-available;">
+      <ion-button style="margin-top:2rem;width:100%;height:3.4rem;" (click)="crear()">Registrarse</ion-button>
+    </div>
+    <p routerLink="/login" style="text-align: center;width:100%;">Volver al login</p>
+  </div>
+</ion-content>

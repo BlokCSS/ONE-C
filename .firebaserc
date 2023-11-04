@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "one-c-93c67": {
+      "hosting": {
+        "app": [
+          "one-c-93c67"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "one-c-93c67"
+  }
+}

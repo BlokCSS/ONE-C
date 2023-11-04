@@ -1,0 +1,42 @@
+<ion-content [fullscreen]="true">
+  
+  <div class="contenedor">
+    <div style="display: flex;margin-top:2rem;">
+      <h1 style="margin: auto;margin-left:0rem;">One-C</h1>
+      <ion-icon (click)="generalService.menuUser()" style="color: white;margin: auto;margin-right: 1rem;font-size: 1.6rem;" name="person"></ion-icon>
+    </div>
+    <ion-button routerLink="/repartidores" style="height:3rem;margin-top:2rem;">Ver repartidores</ion-button>
+  
+    <h2 style="margin-top:2rem;">Paquetes</h2>
+
+    <p *ngIf="loading" style="text-align: center;padding:1rem;">Cargando...</p>
+    <p *ngIf="paquetes.length == 0 && !loading" style="text-align: center;padding:1rem;">No hay paquetes registrados</p>
+
+    <div *ngIf="paquetes.length > 0" class="paquetes">
+      <div *ngFor="let item of paquetes" class="item" (click)="verPaquete(item.id)">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4" style="display:flex;">
+              <img [src]="item.imagen" style="width:100%;height:100%;object-fit:cover;border-radius:0.5rem;max-height:7rem;" />
+            </ion-col>
+            <ion-col size="8">
+              <p style="font-weight: bold;margin: 0;font-size: 1.3rem;">{{item.nombre}}</p>
+              <p style="margin-top: 0.3rem;color: #c1c1c1;">{{item.autor}}</p>
+              <ion-chip style="border-radius: 0.3rem;" color="{{(item.estado == 'POR REPARTIR' ? 'danger' : 'success')}}">{{item.estado}}</ion-chip>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+  
+  <ion-fab style="margin: 1rem;" slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button routerLink="/nuevo">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+</ion-content>
+
+
+
