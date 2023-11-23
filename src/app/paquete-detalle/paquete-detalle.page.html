@@ -9,7 +9,7 @@
     <div style="margin-top:2rem;">
       <h1>{{paquete.nombre}} <ion-chip style="border-radius: 0.3rem;" color="{{(paquete.estado == 'POR REPARTIR' ? 'danger' : 'success')}}">{{paquete.estado}}</ion-chip></h1>
       <p style="font-size: 1.1rem;margin-top: 0.2rem;color: #c1c1c1;"><b>Autor:</b> {{paquete.autor}}</p>
-      <p style="font-size: 1.1rem;margin-top: -0.9rem;color: #c1c1c1;"><b>Precio:</b> {{ generalService.formatPrecio(paquete.precio) }}</p>
+      <p style="font-size: 1.1rem;margin-top: -0.9rem;color: #c1c1c1;"><b>Precio:</b> {{ generalService.formatPrecio(paquete?.precio ? paquete.precio.toString() : '') }}</p>
       <p>
         <b>Descripcion:</b><br>
         {{paquete.descripcion}}</p>

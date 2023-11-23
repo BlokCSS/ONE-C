@@ -45,7 +45,7 @@ export class NuevoPage implements OnInit {
     } else if(this.precio == "") {
         this.generalService.showToast("danger","Debe completar el campo precio");
         return false;
-    } else if(this.precio.match(/^[0-9]+$/) == null) {
+    } else if(/^[0-9]+$/.test(this.precio) == false) {
       this.generalService.showToast("danger","El precio solo debe contener numeros");
       return false;
     } else if(this.autor == "") {
