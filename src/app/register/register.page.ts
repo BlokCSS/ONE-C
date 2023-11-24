@@ -32,16 +32,17 @@ export class RegisterPage implements OnInit {
       createUserWithEmailAndPassword(getAuth(), this.correo,this.contra)
       .then((result) => {
 
-        const document = doc(collection(this.firestore, 'users'));
+        const document = doc(this.firestore, 'users',result.user.uid);
         var SetDoc = setDoc(document, {
           nombre:this.nombre,
-          telefono:this.paises.find(p => p.pais == "Chile")?.codigo+this.telefono,
+          telefono:this.paises.find(p => p.pais == this.pais)?.codigo+this.telefono,
           email:this.correo,
           password:this.contra,
-          id_auth:result.user.uid
+          id_auth:result.user.uid,
+          edad:this.edad
         });
         this.generalService.showToast("success","Usuario registrado con exito");
-        this.router.navigate(['login'],{replaceUrl:true});
+        this.router.navigate(['dashboard'],{replaceUrl:true});
       })
       .catch((error) => {
         console.log(error.message);

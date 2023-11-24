@@ -18,11 +18,12 @@ export class GeneralService {
     authState(this.auth).subscribe((user) => {
       if (user) {
         this.userLogged = user;
-        localStorage.setItem('user', JSON.stringify(this.userLogged));
+        localStorage.setItem('one_c_user', JSON.stringify(this.userLogged));
         JSON.parse(localStorage.getItem('one_c_user')!);
       } else {
+        this.userLogged = null;
         signOut(this.auth);
-        localStorage.removeItem('user');
+        localStorage.removeItem('one_c_user');
         this.router.navigate(['login'],{replaceUrl:true});
       }
     });

@@ -29,9 +29,9 @@ export class RepartidorDetallePage implements OnInit {
     this.porRepartir = JSON.parse(localStorage.getItem("one_c_Paquetes")!).filter((p:any) => p.repartidorID == this.repartidor.id && p.estado == "A REPARTIR");
   }
 
-  verPaquete(id:number) {
+  verPaquete(id:string) {
     console.log(id)
-    this.router.navigate(["/paquete-detalle", id.toString()]);
+    this.router.navigate(["/paquete-detalle", id]);
   }
 
 }

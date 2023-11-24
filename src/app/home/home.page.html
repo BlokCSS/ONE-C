@@ -3,26 +3,35 @@
   <div class="contenedor">
     <div style="display: flex;margin-top:2rem;">
       <h1 style="margin: auto;margin-left:0rem;">One-C</h1>
-      <ion-icon (click)="generalService.menuUser()" style="color: white;margin: auto;margin-right: 1rem;font-size: 1.6rem;" name="person"></ion-icon>
     </div>
     <ion-button routerLink="/repartidores" style="height:3rem;margin-top:2rem;">Ver repartidores</ion-button>
   
     <h2 style="margin-top:2rem;">Paquetes</h2>
 
+    <ion-select *ngIf="!loading" (ionChange)="filtrar()" [(ngModel)]="filtrarEstado" label="Filtrar por estado" label-placement="floating" style="width:100%;margin-bottom: 2rem;margin-top: 1rem;">
+      <ion-select-option value="">Todos</ion-select-option>
+      <ion-select-option value="A REPARTIR">A Repartir</ion-select-option>
+      <ion-select-option value="POR REPARTIR">Por Repartir</ion-select-option>
+      <ion-select-option value="ENTREGADO">Entregado</ion-select-option>
+    </ion-select>
+
     <p *ngIf="loading" style="text-align: center;padding:1rem;">Cargando...</p>
     <p *ngIf="paquetes.length == 0 && !loading" style="text-align: center;padding:1rem;">No hay paquetes registrados</p>
+    
 
     <div *ngIf="paquetes.length > 0" class="paquetes">
-      <div *ngFor="let item of paquetes" class="item" (click)="verPaquete(item.id)">
+
+      <div *ngFor="let item of paquetes" class="item">
         <ion-grid>
           <ion-row>
-            <ion-col size="4" style="display:flex;">
+            <ion-col (click)="verPaquete(item.id)" size="4" style="display:flex;">
               <img [src]="item.imagen" style="width:100%;height:100%;object-fit:cover;border-radius:0.5rem;max-height:7rem;" />
             </ion-col>
             <ion-col size="8">
-              <p style="font-weight: bold;margin: 0;font-size: 1.3rem;">{{item.nombre}}</p>
-              <p style="margin-top: 0.3rem;color: #c1c1c1;">{{item.autor}}</p>
-              <ion-chip style="border-radius: 0.3rem;" color="{{(item.estado == 'POR REPARTIR' ? 'danger' : 'success')}}">{{item.estado}}</ion-chip>
+              <ion-icon *ngIf="item.estado != 'ENTREGADO'" (click)="opciones(item)" style="position:absolute;right:0;" name="ellipsis-vertical-outline"></ion-icon>
+              <p (click)="verPaquete(item.id)" style="font-weight: bold;margin: 0;font-size: 1.3rem;">{{item.nombre}}</p>
+              <p (click)="verPaquete(item.id)" style="margin-top: 0.3rem;color: #c1c1c1;">{{item.autor}}</p>
+              <ion-chip (click)="verPaquete(item.id)" style="border-radius: 0.3rem;" color="{{(item.estado == 'POR REPARTIR' ? 'danger' : item.estado == 'A REPARTIR' ? 'warning' : 'success')}}">{{item.estado}}</ion-chip>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -31,7 +40,7 @@
   </div>
   
   <ion-fab style="margin: 1rem;" slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button routerLink="/nuevo">
+    <ion-fab-button routerLink="/nuevo/Nuevo">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

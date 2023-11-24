@@ -55,7 +55,7 @@ export class LoginPage implements OnInit {
       .then(async (result) => {
         authState(this.auth).subscribe((user:any) => {
           if (user) {
-            this.router.navigate(['home'],{replaceUrl:true});
+            this.router.navigate(['dashboard'],{replaceUrl:true});
           }
         });
       })

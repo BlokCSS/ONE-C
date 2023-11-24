@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Paquete } from '../models/paquete.models';
 import { Repartidor } from '../models/repartidor.models';
 import { ToastController } from '@ionic/angular';
-import { Firestore, doc, docData } from '@angular/fire/firestore';
+import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
 import { GeneralService } from '../general.service';
 
 @Component({
@@ -33,7 +33,7 @@ export class PaqueteDetallePage implements OnInit {
     }).subscribe((i) => {
       this.paquete = <Paquete>i;
     });
-    this.paquete = JSON.parse(localStorage.getItem("one_c_Paquetes")!).find((p:any) => p.id.toString() == this.id);
+    //this.paquete = JSON.parse(localStorage.getItem("one_c_Paquetes")!).find((p:any) => p.id.toString() == this.id);
     this.repartidor = JSON.parse(localStorage.getItem("one_c_Repartidores")!).find((r:any) => r.id == this.paquete.repartidorID);
   }
 
@@ -45,6 +45,19 @@ export class PaqueteDetallePage implements OnInit {
     });
 
     await toast.present();
+  }
+
+  entregar() {
+    var document = doc(this.firestore, 'items',this.id);
+    setDoc(document, {
+      nombre:this.paquete.nombre,
+      descripcion:this.paquete.descripcion,
+      precio:this.paquete.precio,
+      autor:this.paquete.autor,
+      imagen:this.paquete.imagen,
+      repartidorID:this.paquete.repartidorID,
+      estado:"ENTREGADO"
+    });
   }
 
 }

@@ -1,3 +1,20 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
+
+  <ion-tabs *ngIf="generalService.userLogged">
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button routerLink="/dashboard">
+        <ion-icon name="play-circle"></ion-icon>
+        Dashboard
+      </ion-tab-button>
+      <ion-tab-button routerLink="/home">
+        <ion-icon name="radio"></ion-icon>
+        Paquetes
+      </ion-tab-button>
+      <ion-tab-button routerLink="/perfil">
+        <ion-icon name="library"></ion-icon>
+        Perfil
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-app>

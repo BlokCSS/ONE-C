@@ -3,9 +3,14 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { redirectUnauthorizedTo, redirectLoggedInTo, canActivate } from '@angular/fire/auth-guard';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
-const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
 
 const routes: Routes = [
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
@@ -17,7 +22,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'nuevo',
+    path: 'nuevo/:id',
     loadChildren: () => import('./nuevo/nuevo.module').then( m => m.NuevoPageModule),
     ...canActivate(redirectUnauthorizedToLogin)
   },
@@ -46,6 +51,12 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
     ...canActivate(redirectLoggedInToHome)
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+
 
 
 ];

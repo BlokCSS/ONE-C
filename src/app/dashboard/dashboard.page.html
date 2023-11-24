@@ -1,0 +1,51 @@
+
+<ion-content [fullscreen]="true">
+  
+  <div style="padding:1rem;">
+
+    <div style="display: flex;margin-top:2rem;margin-bottom:2rem;">
+      <h1 style="margin: auto;margin-left:0rem;">One-C</h1>
+    </div>
+
+    <p *ngIf="loading" style="text-align: center;padding:1rem;">Cargando...</p>
+
+    <div *ngIf="!loading" style="display: flex;width:100%;">
+
+      <div style="width:50%;padding:0.5rem;">
+        <div style="width:100%;padding:1rem;background-color:orange;border-radius:0.4rem;">
+          <p class="indicadorP">Paquetes</p>
+          <h1 class="indicadorH1">{{a_repartir+por_repartir+entregados}}</h1>
+        </div>
+      </div>
+
+      <div style="width:50%;padding:0.5rem;">
+        <div style="width:100%;padding:1rem;background-color:orange;border-radius:0.4rem;">
+          <p class="indicadorP">A repartir</p>
+          <h1 class="indicadorH1">{{a_repartir}}</h1>
+        </div>
+      </div>
+    
+    </div>
+
+    <div *ngIf="!loading" style="display: flex;width:100%;">
+    
+      <div style="width:50%;padding:0.5rem;">
+        <div style="width:100%;padding:1rem;background-color:orange;border-radius:0.4rem;">
+          <p class="indicadorP">Por repartir</p>
+          <h1 class="indicadorH1">{{por_repartir}}</h1>
+        </div>
+      </div>
+
+      <div style="width:50%;padding:0.5rem;">
+        <div style="width:100%;padding:1rem;background-color:orange;border-radius:0.4rem;">
+          <p class="indicadorP">Entregados</p>
+          <h1 class="indicadorH1">{{entregados}}</h1>
+        </div>
+      </div>
+    
+    </div>
+
+  </div>
+
+
+</ion-content>

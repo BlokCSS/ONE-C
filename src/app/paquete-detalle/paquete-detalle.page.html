@@ -9,7 +9,7 @@
     <div style="margin-top:2rem;">
       <h1>{{paquete.nombre}} <ion-chip style="border-radius: 0.3rem;" color="{{(paquete.estado == 'POR REPARTIR' ? 'danger' : 'success')}}">{{paquete.estado}}</ion-chip></h1>
       <p style="font-size: 1.1rem;margin-top: 0.2rem;color: #c1c1c1;"><b>Autor:</b> {{paquete.autor}}</p>
-      <p style="font-size: 1.1rem;margin-top: -0.9rem;color: #c1c1c1;"><b>Precio:</b> {{ generalService.formatPrecio(paquete.precio) }}</p>
+      <p style="font-size: 1.1rem;margin-top: -0.9rem;color: #c1c1c1;"><b>Precio:</b> {{ generalService.formatPrecio(paquete?.precio ? paquete.precio.toString() : '') }}</p>
       <p>
         <b>Descripcion:</b><br>
         {{paquete.descripcion}}</p>
@@ -19,6 +19,10 @@
 
     <div style="width: 100%;height: 24rem;margin-top: 3rem;">
       <img src="{{paquete.imagen}}" style="width:100%;height:100%;object-fit: contain;" />
+    </div>
+
+    <div *ngIf="paquete.estado == 'A REPARTIR'" style="position: relative;top: 0;left:0;margin:1rem;margin-top:2rem;width: -webkit-fill-available;">
+      <ion-button style="margin-top:2rem;width:100%;height:3.4rem;" (click)="entregar()">Marcar como entregado</ion-button>
     </div>
   </div>
 </ion-content>
