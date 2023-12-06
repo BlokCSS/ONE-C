@@ -30,7 +30,7 @@
             <ion-col size="8">
               <ion-icon *ngIf="item.estado != 'ENTREGADO'" (click)="opciones(item)" style="position:absolute;right:0;" name="ellipsis-vertical-outline"></ion-icon>
               <p (click)="verPaquete(item.id)" style="font-weight: bold;margin: 0;font-size: 1.3rem;">{{item.nombre}}</p>
-              <p (click)="verPaquete(item.id)" style="margin-top: 0.3rem;color: #c1c1c1;">{{item.autor}}</p>
+              <!-- <p (click)="verPaquete(item.id)" style="margin-top: 0.3rem;color: #c1c1c1;">{{item.autor}}</p> -->
               <ion-chip (click)="verPaquete(item.id)" style="border-radius: 0.3rem;" color="{{(item.estado == 'POR REPARTIR' ? 'danger' : item.estado == 'A REPARTIR' ? 'warning' : 'success')}}">{{item.estado}}</ion-chip>
             </ion-col>
           </ion-row>
